@@ -6,6 +6,8 @@ const Form = () => {
   const [password, setPassword] = useState("");
   const [verif, setVerif] = useState("");
   const [showError, setShowError] = useState(false);
+  const [state1, setOn1] = useState(true);
+  const [state2, setOn2] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,7 +70,33 @@ const Form = () => {
             name="verif"
             onChange={handleVerifChange}
           />
-          <input type="submit" value="Inscription" />
+          <input
+            type="submit"
+            value="Inscription"
+            onClick={() => {
+              setOn1(!state1);
+            }}
+          />
+
+          <div>
+            {state1 === false ? (
+              <div className="verification">
+                <span>Name : {name}</span>
+                <span>Email : {email}</span>
+                <span>Password : {password}</span>
+
+                <button
+                  onClick={() => {
+                    setOn2(state2);
+                  }}
+                >
+                  Modifier les informations
+                </button>
+              </div>
+            ) : (
+              console.log("hello")
+            )}
+          </div>
         </form>
       </main>
     </>
